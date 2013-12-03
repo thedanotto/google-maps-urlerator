@@ -1,5 +1,10 @@
 *.py[cod]
 
+*.log
+*.pot
+*.pyc
+.DS_Store
+
 # C extensions
 *.so
 
