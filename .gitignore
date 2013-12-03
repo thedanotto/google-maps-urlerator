@@ -4,7 +4,7 @@ google_maps_urlerator.sqlite3
 *.pot
 *.pyc
 .DS_Store
-
+static/static-only/*
 # C extensions
 *.so
 
