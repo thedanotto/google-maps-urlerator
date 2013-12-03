@@ -1,5 +1,5 @@
 *.py[cod]
-
+google_maps_urlerator.sqlite3
 *.log
 *.pot
 *.pyc
