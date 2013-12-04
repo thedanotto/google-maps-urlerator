@@ -3,11 +3,12 @@ google_maps_urlerator.sqlite3
 *.log
 *.pot
 *.pyc
+./google_maps_urlerator/settings/__init__.py
 .DS_Store
 static/static-only/*
 # C extensions
 *.so
-
+live.py
 # Packages
 *.egg
 *.egg-info
