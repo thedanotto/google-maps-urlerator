@@ -126,4 +126,5 @@ INSTALLED_APPS = (
     'stripe',
     'registration',
     'south',
+    'urlerator',
 )
