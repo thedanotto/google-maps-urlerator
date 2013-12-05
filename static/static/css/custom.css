@@ -1,3 +1,30 @@
 div.jumbotron > .container {
     padding-top: 30px;
 }
+
+.jumbotron {
+    background-color: #E2DFDF;    
+}
+
+.look-good {
+    width: 155px;
+    display: inline-block;
+}
+
+#diff {
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0px;
+}
+
+.output {
+    margin: 20px 0px;
+    padding: 20px;
+    border-radius: 10px; 
+    background-color: #eeeeee;
+}
+
+.width-90 {
+    width: 90%;
+}

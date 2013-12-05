@@ -3,18 +3,30 @@
 {% block jumbotron %}
         <div class="jumbotron">
       <div class="container">
-        <h1>Generate and Share Google Maps URLs</h1>
-        <p>Provide an address and we'll generate a google maps link that you can share with anyone.</p>
+        <h1>Generate Google Maps URLs to Share</h1>
+        <div id="diff" class="width-90">
+          <p>Provide an address and we'll generate google maps links that you can share with anyone.</p>
+        </div>
         <!-- <p>Perfect tool to help people get to the desired location</p> -->
  
-  <form class="search_form" action='{% url 'home' %}' method='POST'> {% csrf_token %}
+  <form class="search_form" action='{% url 'home' %}#scroll' method='POST'> {% csrf_token %}
     <div class="form-group">
         <label for="address">To Address:</label>&nbsp;<input type="text" name="address" /><br>
-        <input type="submit" class="btn btn-primary btn-md" value="Create My Google Maps URL" />
+        <input type="submit" class="btn btn-primary btn-md scroll" value="Create My Google Maps URL" />
     </div>
   </form>
-  {% if google_directions_url %}
-  {{ google_directions_url }}
+  {% if url_output %}
+    <div id="scroll"></div><br>
+    <div class="output width-90">
+      <h2>Results:</h2>
+      <span class="look-good">Link:</span> <a target="_" href="{{ url_output }}" >Directions</a><br>
+      <span class="look-good">Copy and Paste:</span> <textarea onClick="this.select();" rows="4" cols="50">
+        {{ url_output }}
+      </textarea><br>
+      <span class="look-good">Webpage:</span> <textarea onClick="this.select();" rows="4" cols="50">
+      {{ html_output }}
+      </textarea>
+    </div>
   {% endif %}
       </div>
     </div>
