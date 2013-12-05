@@ -7,5 +7,6 @@ class UrlChecker(models.Model):
     url_output = models.CharField(max_length=600, null=True, blank=True)
     html_output = models.CharField(max_length=700, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     def __unicode__(self, ):
         return self.from_address
