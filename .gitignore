@@ -3,6 +3,7 @@ google_maps_urlerator.sqlite3
 *.log
 *.pot
 *.pyc
+urlerator/*
 ./google_maps_urlerator/settings/__init__.py
 .DS_Store
 static/static-only/*
