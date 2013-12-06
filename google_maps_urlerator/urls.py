@@ -12,4 +12,5 @@ urlpatterns = patterns('',
         'document_root': settings.MEDIA_ROOT }),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'urlerator.views.home', name='home'),
+    url(r'^google-maps/$', 'urlerator.views.home', name='google-maps'),
 )
