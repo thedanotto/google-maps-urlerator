@@ -83,11 +83,11 @@
     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
     <script>
     $(document).ready(function(){
-      $('.scroll').click(function(e) {
-        $("body, html").animate({
-            scrollTop: $('#scroll').offset().top - 60
-            }, "slow")
-      });
+    //    $('.scroll').click(function(e) {
+    //    $("body, html").animate({
+    //        scrollTop: $('#scroll').offset().top - 60
+    //        }, "slow")
+    //  });
       {% block jquery %}
       
       {% endblock %}

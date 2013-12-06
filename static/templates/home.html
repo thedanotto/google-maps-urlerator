@@ -1,5 +1,40 @@
 {% extends 'base.html' %}
-{% load staticfiles %}
+
+{% block jquery %}
+    $('.scroll').click(function(e) {
+        e.preventDefault()
+        $to_address = $('#id_address').val()
+        $csrf_token = $('#csrf').val()
+
+        $.ajax({
+
+          type: "POST",
+          url: "{% url 'home' %}",
+          data: {
+          to_address: $to_address,
+          csrfmiddlewaretoken: $csrf_token,
+          
+          
+          },
+          success: function(new_data) {
+            $("#ajax_results").removeClass("hidden");
+            $("#url_url_output").attr("href", new_data.url_output)
+            $("#text_url_output").val(new_data.url_output)
+            $("#text_html_output").val(new_data.html_output)
+                    $("body, html").animate({
+            scrollTop: $('#ajax_results').offset().top - 60
+            }, "slow")
+          },
+          error: function(rs, e) {
+            alert("some error occurred")
+          }
+        
+        })
+        
+
+      });
+  {% endblock %}
+
 {% block jumbotron %}
         <div class="jumbotron">
       <div class="container">
@@ -8,10 +43,11 @@
           <p>Provide an address and we'll generate google maps links that you can share with anyone.</p>
         </div>
         <!-- <p>Perfect tool to help people get to the desired location</p> -->
+<input type="hidden" id="csrf" value="{{ csrf_token }}" /> 
  
   <form class="search_form" action='{% url 'home' %}#scroll' method='POST'> {% csrf_token %}
     <div class="form-group">
-        <label for="address">To Address:</label>&nbsp;<input type="text" name="address" /><br>
+        <label for="address">To Address:</label>&nbsp;<input type="text" id="id_address" name="address" /><br>
         <input type="submit" class="btn btn-primary btn-md scroll" value="Create My Google Maps URL" />
     </div>
   </form>
@@ -19,7 +55,7 @@
     <div id="scroll"></div><br>
     <div class="output width-90">
       <h2>Results:</h2>
-      <span class="look-good">Link:</span> <a target="_" href="{{ url_output }}" >Directions</a><br>
+      <span class="look-good">Link:</span> <a target="_" href="" >Directions</a><br>
       <span class="look-good">Copy and Paste:</span> <textarea onClick="this.select();" rows="4" cols="50">
         {{ url_output }}
       </textarea><br>
@@ -28,6 +64,18 @@
       </textarea>
     </div>
   {% endif %}
+  
+    <div id="ajax_results" class="hidden output width-90">
+      <h2>Results:</h2>
+      <span class="look-good">Link:</span> <a target="_" id="url_url_output" href="{{ url_output }}" >Directions</a><br>
+      <span class="look-good">Copy and Paste:</span> <textarea id="text_url_output" onClick="this.select();" rows="4" cols="50">
+        {{ url_output }}
+      </textarea><br>
+      <span class="look-good">Webpage:</span> <textarea id="text_html_output" onClick="this.select();" rows="4" cols="50">
+      {{ html_output }}
+      </textarea>
+    </div>
+  
       </div>
     </div>
         
